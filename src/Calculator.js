@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 const COLOR = {
@@ -36,8 +37,29 @@ const Button = ({ text, onPress, flex, type }) => {
 };
 
 export default () => {
+  const [input, setInput] = useState(0);
+  const [currentOperator, setCurrentOperator] = useState(null);
+  const [result, setResult] = useState(null);
+  const [tempInput, setTempInput] = useState(null);
+  const [tempOperator, setTempOperator] = useState(null);
+
   return (
-    <View style={{ width: 250 }}>
+    <View style={{ flex: 1, width: 250, justifyContent: "center" }}>
+      <View
+        style={{
+          backgroundColor: COLOR.RESULT,
+          minHeight: 50,
+          justifyContent: "center",
+          alignItems: "flex-end",
+          paddingVertical: 10,
+          paddingHorizontal: 5,
+        }}
+      >
+        <Text style={{ color: "white", fontSize: 35, textAlign: "right" }}>
+          {input}
+        </Text>
+      </View>
+
       <View style={{ flexDirection: "row", width: "100%" }}>
         <Button text="AC" type="reset" flex={3} onPress={() => null} />
         <Button text="/" type="operator" flex={1} onPress={() => null} />

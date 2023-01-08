@@ -1,6 +1,12 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import {
+  getStatusBarHeight,
+  getBottomSpace,
+} from "react-native-iphone-x-helper";
 import Calculator from "./src/Calculator";
+
+const statusBarHeight = getStatusBarHeight(true);
+const bottomSpace = getBottomSpace();
 
 export default function App() {
   return (
@@ -16,5 +22,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    paddingTop: statusBarHeight,
+    paddingBottom: bottomSpace,
   },
 });
